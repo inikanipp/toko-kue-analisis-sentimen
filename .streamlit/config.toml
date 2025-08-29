@@ -1,0 +1,5 @@
+[theme]
+primaryColor="#F86A69"        # warna saat tombol terpilih (misalnya hijau)
+backgroundColor="#ffffff"     # warna background
+secondaryBackgroundColor="#f0f2f6"
+textColor="#000000"
