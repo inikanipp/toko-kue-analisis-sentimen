@@ -60,7 +60,7 @@ navbar_html = """
 
 st.markdown(navbar_html, unsafe_allow_html=True)
 
-df = pd.read_csv("preprocessing/output/data.csv")
+df = pd.read_csv("preprocessing/data.csv")
 
 # =========================================== Styling Text Box ======================================================================
 st.markdown("""
@@ -112,26 +112,32 @@ def predict_label(text):
     y_pred = model.predict(X)[0]
     return y_pred
 
-# st.line_chart(data)
 # Simpan riwayat chat
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
 with st.sidebar:
+    st.title("Chat Sentimen")
 
-    # Input pesan
-    if user_input := st.chat_input("Ketik pesan..."):
-        label = predict_label(user_input)
+    # Container untuk pesan
+    chat_container = st.container()
+
+    # Input selalu di paling bawah
+    user_input = st.chat_input("Ketik pesan...")
+
+    # Simpan pesan baru
+    if user_input:
+        label = "positif"  # ganti dengan predict_label(user_input)
         st.session_state.messages.append((user_input, label))
 
-    # with st.container(col):
-    # Tampilkan riwayat
-        for text, label in reversed(st.session_state.messages):
-            if label == "positif" :
+    # Tampilkan pesan di atas input (lama → baru)
+    with chat_container:
+        for text, label in st.session_state.messages:
+            if label == "positif":
                 st.success(text)
-            if label == "netral" :
+            elif label == "netral":
                 st.warning(text)
-            if label == "negatif" :
+            elif label == "negatif":
                 st.error(text)
         # st.write(f"**{text}** → {label}")
 # =========================================== end side bar ======================================================================
