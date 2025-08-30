@@ -117,7 +117,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 with st.sidebar:
-    st.markdown('<h1 style="color: #000000;">komentar</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="color: #A3A8B8;">komentar</h1>', unsafe_allow_html=True)
 
     chat_container = st.container()
 
