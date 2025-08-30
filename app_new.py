@@ -49,7 +49,7 @@ navbar_html = """
 </style>
 
 <div class="navbar1">
-  <div class="brand">Toko Kue</div>
+  <div class="brand">Tasanee Bread</div>
   <div class="nav-links">
     <a href="#home">Home</a>
     <a href="#wd">World Cloud</a>
