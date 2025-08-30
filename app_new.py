@@ -66,7 +66,7 @@ df = pd.read_csv("preprocessing/data.csv")
 st.markdown("""
     <style>
     div[data-testid="stVerticalBlock"] {
-
+        background-color : #FFFFFF;
         border-radius: 12px;
         padding: 20px 20px 20px 20px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.08);
@@ -117,20 +117,16 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 with st.sidebar:
-    st.title("Chat Sentimen")
+    st.markdown('<h1 style="color: #000000;">komentar</h1>', unsafe_allow_html=True)
 
-    # Container untuk pesan
     chat_container = st.container()
 
-    # Input selalu di paling bawah
     user_input = st.chat_input("Ketik pesan...")
 
-    # Simpan pesan baru
     if user_input:
-        label = "positif"  # ganti dengan predict_label(user_input)
+        label = predict_label(user_input)
         st.session_state.messages.append((user_input, label))
 
-    # Tampilkan pesan di atas input (lama → baru)
     with chat_container:
         for text, label in st.session_state.messages:
             if label == "positif":
@@ -139,7 +135,6 @@ with st.sidebar:
                 st.warning(text)
             elif label == "negatif":
                 st.error(text)
-        # st.write(f"**{text}** → {label}")
 # =========================================== end side bar ======================================================================
 
 
